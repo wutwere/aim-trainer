@@ -3,27 +3,35 @@ local BoxButton = require("./BoxButton")
 local Frame = require("./Frame")
 local React = require("@Packages/React")
 local Text = require("./Text")
-local UIController = require("@Client/Controllers/UIController")
-local useBindable = require("../Hooks/useBindable")
+local useKeybind = require("../Hooks/useKeybind")
 local useRem = require("../Hooks/useRem")
 
 local e = React.createElement
 
 return function(props: { [string]: any })
 	local rem = useRem()
-	local open = useBindable(UIController.Open)
-	local dof = React.useMemo(function()
-		local obj = Instance.new("DepthOfFieldEffect")
-		obj.FarIntensity = 1
-		obj.FocusDistance = 0
-		obj.InFocusRadius = 8
-		obj.NearIntensity = 0
-		return obj
-	end, {})
+	local open, setOpen = React.useState(true)
+	local keyDown = useKeybind(Enum.KeyCode.M)
 
 	React.useEffect(function()
-		dof.Parent = if open then game:GetService("Lighting") else nil
-	end, { open })
+		local obj
+		if keyDown then
+			setOpen(true)
+		end
+		if open then
+			obj = Instance.new("DepthOfFieldEffect")
+			obj.FarIntensity = 1
+			obj.FocusDistance = 0
+			obj.InFocusRadius = 8
+			obj.NearIntensity = 0
+			obj.Parent = game:GetService("Lighting")
+		end
+		return function()
+			if obj then
+				obj:Destroy()
+			end
+		end
+	end, { open, keyDown })
 
 	return e(Frame, { Visible = open }, {
 		e(Box, {
@@ -39,7 +47,7 @@ return function(props: { [string]: any })
 			Size = UDim2.new(0, rem(200), 0, rem(50)),
 			OnClick = function()
 				print("PLAY")
-				UIController:SetMenuOpen(false)
+				setOpen(false)
 			end,
 		}, {
 			e(Text, { Text = "PLAY" }),

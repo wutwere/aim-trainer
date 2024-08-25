@@ -3,6 +3,8 @@ local React = require("@Packages/React")
 local ReactRoblox = require("@Packages/ReactRoblox")
 local ScreenGui = require("@Client/UI/Components/ScreenGui")
 
-local root = ReactRoblox.createRoot(game:GetService("Players").LocalPlayer.PlayerGui)
+local folder = Instance.new("Folder")
+local root = ReactRoblox.createRoot(folder)
 
 root:render(React.createElement(ScreenGui, {}, React.createElement(App)))
+folder.Parent = game:GetService("Players").LocalPlayer.PlayerGui

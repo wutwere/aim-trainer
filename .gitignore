@@ -1,0 +1,11 @@
+# Project place file
+/testrojo.rbxlx
+
+# Roblox Studio lock files
+/*.rbxlx.lock
+/*.rbxl.lock
+
+Packages/
+dist/
+**/*.rbx[lm]*
+sourcemap.json

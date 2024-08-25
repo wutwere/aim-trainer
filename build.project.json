@@ -1,0 +1,27 @@
+{
+	"name": "testrojo",
+	"tree": {
+		"$className": "DataModel",
+		"ReplicatedFirst": {
+			"Client": {
+				"$path": "dist/Client"
+			},
+			"Shared": {
+				"$path": "dist/Shared"
+			},
+			"Packages": {
+				"$path": "Packages"
+			}
+		},
+		"ServerScriptService": {
+			"Server": {
+				"$path": "dist/Server"
+			}
+		},
+		"SoundService": {
+			"$properties": {
+				"RespectFilteringEnabled": true
+			}
+		}
+	}
+}

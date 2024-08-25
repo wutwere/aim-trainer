@@ -1,0 +1,24 @@
+{
+	"name": "testrojo",
+	"tree": {
+		"$className": "DataModel",
+		"ReplicatedFirst": {
+			"BUNDLED": {
+				"$path": "dist/Bundled/Main.client.luau"
+			},
+			"Packages": {
+				"$path": "Packages"
+			}
+		},
+		"ServerScriptService": {
+			"BUNDLED": {
+				"$path": "dist/Bundled/Main.server.luau"
+			}
+		},
+		"SoundService": {
+			"$properties": {
+				"RespectFilteringEnabled": true
+			}
+		}
+	}
+}

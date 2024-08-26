@@ -12,6 +12,7 @@ export type TextProps = {
 	Text: string?,
 	TextColor3: Color3?,
 	TextScaled: boolean?,
+	TextXAlignment: Enum.TextXAlignment?,
 	Font: Font?,
 }
 
@@ -25,6 +26,7 @@ return function(props: TextProps)
 		RichText = props.RichText or true,
 		TextScaled = props.TextScaled or true,
 		TextColor3 = props.TextColor3 or Palette.WHITE,
+		TextXAlignment = props.TextXAlignment or Enum.TextXAlignment.Center,
 		BackgroundTransparency = 1,
 	})
 end

@@ -5,6 +5,7 @@ local DamageController = require("./DamageController")
 local InputController = require("./InputController")
 local SoundController = require("./SoundController")
 local Sounds = require("@Shared/Sounds")
+local StatsController = require("./StatsController")
 local TweenController = require("./TweenController")
 
 local MAX_BULLET_DISTANCE = 1000
@@ -80,6 +81,9 @@ function public:TryShoot()
 		DamageController:TryDamage(part)
 	end
 	SoundController:PlayLocalSound(Sounds.AK47_SHOOT)
+	StatsController.TotalShots:UpdateValue(function(val)
+		return val + 1
+	end)
 	AnimateBullet((camCF * CFrame.new(1, -2, 0)).Position, dest)
 end
 

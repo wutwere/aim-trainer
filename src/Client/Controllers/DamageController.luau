@@ -1,5 +1,6 @@
 local SoundController = require("./SoundController")
 local Sounds = require("@Shared/Sounds")
+local StatsController = require("./StatsController")
 local TweenController = require("./TweenController")
 
 local INTERNAL_HIGHLIGHT_ID = "__DAMAGE_HIGHLIGHT__"
@@ -37,6 +38,13 @@ function public:TryDamage(part: BasePart)
 		SoundController:PlayLocalSound(Sounds.HITMARKER, 1)
 		if part.Name == "Head" then
 			SoundController:PlayLocalSound(Sounds.HEADSHOT, 2)
+			StatsController.Headshots:UpdateValue(function(val)
+				return val + 1
+			end)
+		else
+			StatsController.Bodyshots:UpdateValue(function(val)
+				return val + 1
+			end)
 		end
 		AnimateDamage(part.Parent :: Model)
 	end

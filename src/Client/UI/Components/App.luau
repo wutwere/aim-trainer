@@ -1,5 +1,6 @@
 local Box = require("./Box")
 local BoxButton = require("./BoxButton")
+local CameraController = require("@Client/Controllers/CameraController")
 local Frame = require("./Frame")
 local React = require("@Packages/React")
 local Text = require("./Text")
@@ -25,6 +26,9 @@ return function(props: { [string]: any })
 			obj.InFocusRadius = 8
 			obj.NearIntensity = 0
 			obj.Parent = game:GetService("Lighting")
+			CameraController:SetZoom(1)
+		else
+			CameraController:SetZoom(0.5)
 		end
 		return function()
 			if obj then

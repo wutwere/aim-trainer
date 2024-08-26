@@ -8,3 +8,10 @@
 1. Run `scripts/dev.bat`
 2. In Roblox Studio, open Rojo (get it if you don't have it) and sync
 3. When you're done developing, run `scripts/bundle.bat` to combine everything into one script and reduce the likelihood of exploiters abusing your code.
+
+# VSCode Extensions
+
+1. Rojo
+2. Luau Language Server
+3. Selene
+3. StyLua

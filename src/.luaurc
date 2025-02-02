@@ -1,3 +1,9 @@
 {
-    "languageMode": "strict"
+  "languageMode": "strict",
+  "aliases": {
+    "Packages": "../Packages/",
+    "Client": "Client/",
+    "Shared": "Shared/",
+    "Server": "Server/"
+  }
 }
